@@ -9,7 +9,7 @@ st.set_page_config(page_title="Netflix Dashboard", layout="wide")
 # ---------------- LOAD DATA ----------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv("dataset/netflix_titles.csv")
+    df = pd.read_csv("netflix_titles.csv")
     df["country"] = df["country"].fillna("Unknown")
     df["listed_in"] = df["listed_in"].fillna("Unknown")
     df["date_added"] = pd.to_datetime(df["date_added"], errors="coerce")
