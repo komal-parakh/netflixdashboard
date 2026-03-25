@@ -141,8 +141,6 @@ elif page == "Data Explorer":
 elif page == "Visualizations":
     st.title("📊 Visualizations")
 
-    st.markdown("### 🔥 Content Distribution")
-
     col1, col2 = st.columns(2)
 
     with col1:
@@ -160,8 +158,6 @@ elif page == "Visualizations":
         ax.bar(ratings.index, ratings.values)
         ax.tick_params(axis='x', rotation=45)
         show_plot(fig)
-
-    st.markdown("### 📈 Trends")
 
     col3, col4 = st.columns(2)
 
@@ -181,8 +177,6 @@ elif page == "Visualizations":
         fig, ax = plt.subplots(figsize=(6,4))
         ax.barh(countries.index, countries.values)
         show_plot(fig)
-
-    st.markdown("### 📊 Additional Insights")
 
     col5, col6 = st.columns(2)
 
