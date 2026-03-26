@@ -38,7 +38,7 @@ h1, h2, h3 {
 """, unsafe_allow_html=True)
 
 # ---------------- SIDEBAR ----------------
-st.sidebar.title("🎬 Netflix Dashboard")
+st.sidebar.title("Netflix Dashboard")
 
 page = st.sidebar.radio(
     "Navigation",
