@@ -143,24 +143,35 @@ elif page == "Visualizations":
 
     col1, col2 = st.columns(2)
 
+    # ---------- TOP GENRES ----------
     with col1:
         genres = filtered_df["listed_in"].str.split(", ").explode()
         top_genres = genres.value_counts().head(10)
 
         fig, ax = plt.subplots(figsize=(6,4))
         ax.barh(top_genres.index, top_genres.values)
+        ax.set_title("Top 10 Genres on Netflix")
+        ax.set_xlabel("Number of Titles")
+        ax.set_ylabel("Genres")
+        ax.grid(True, linestyle="--", alpha=0.5)
         show_plot(fig)
 
+    # ---------- RATINGS ----------
     with col2:
         ratings = filtered_df["rating"].value_counts()
 
         fig, ax = plt.subplots(figsize=(6,4))
         ax.bar(ratings.index, ratings.values)
+        ax.set_title("Content Ratings Distribution")
+        ax.set_xlabel("Ratings")
+        ax.set_ylabel("Count")
         ax.tick_params(axis='x', rotation=45)
+        ax.grid(True, linestyle="--", alpha=0.5)
         show_plot(fig)
 
     col3, col4 = st.columns(2)
 
+    # ---------- MOVIES vs TV ----------
     with col3:
         movies = filtered_df[filtered_df["type"] == "Movie"].groupby("release_year").size()
         tv = filtered_df[filtered_df["type"] == "TV Show"].groupby("release_year").size()
@@ -168,32 +179,52 @@ elif page == "Visualizations":
         fig, ax = plt.subplots(figsize=(6,4))
         ax.plot(movies.index, movies.values, label="Movies")
         ax.plot(tv.index, tv.values, label="TV Shows")
+        ax.set_title("Movies vs TV Shows Over Time")
+        ax.set_xlabel("Release Year")
+        ax.set_ylabel("Number of Titles")
         ax.legend()
+        ax.grid(True, linestyle="--", alpha=0.5)
         show_plot(fig)
 
+    # ---------- TOP COUNTRIES ----------
     with col4:
         countries = filtered_df["country"].value_counts().head(10)
 
         fig, ax = plt.subplots(figsize=(6,4))
         ax.barh(countries.index, countries.values)
+        ax.set_title("Top 10 Content Producing Countries")
+        ax.set_xlabel("Number of Titles")
+        ax.set_ylabel("Countries")
+        ax.grid(True, linestyle="--", alpha=0.5)
         show_plot(fig)
 
     col5, col6 = st.columns(2)
 
+    # ---------- MONTHLY CONTENT ----------
     with col5:
         monthly = filtered_df["date_added"].dt.month.value_counts().sort_index()
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.plot(monthly.index, monthly.values, marker="o")
+        ax.plot(monthly.index, monthly.values, marker="o", label="Content Added")
+        ax.set_title("Content Added Per Month")
+        ax.set_xlabel("Month")
+        ax.set_ylabel("Number of Titles")
+        ax.legend()
+        ax.grid(True, linestyle="--", alpha=0.5)
         show_plot(fig)
 
+    # ---------- DURATION ----------
     with col6:
-        filtered_df["duration_int"] = filtered_df["duration"].str.extract("(\d+)").astype(float)
+        temp_df = filtered_df.copy()  # FIX WARNING
+        temp_df["duration_int"] = temp_df["duration"].str.extract("(\d+)").astype(float)
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.hist(filtered_df["duration_int"].dropna(), bins=20)
+        ax.hist(temp_df["duration_int"].dropna(), bins=20)
+        ax.set_title("Distribution of Content Duration")
+        ax.set_xlabel("Duration (Minutes/Seasons)")
+        ax.set_ylabel("Frequency")
+        ax.grid(True, linestyle="--", alpha=0.5)
         show_plot(fig)
-
 # =========================================================
 # 🧠 INSIGHTS
 # =========================================================
