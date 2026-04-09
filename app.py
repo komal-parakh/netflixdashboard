@@ -67,6 +67,20 @@ countries = ["All"] + list(df["country"].unique())
 country_filter = st.sidebar.selectbox("Country", countries)
 
 # ---------------- FILTER LOGIC ----------------
+filtered_df = df[
+    (df["release_year"].between(year_range[0], year_range[1])) &
+    (df["type"].isin(type_filter))
+]
+
+if genre_filter != "All":
+    filtered_df = filtered_df[
+        filtered_df["listed_in"].str.contains(genre_filter)
+    ]
+
+if country_filter != "All":
+    filtered_df = filtered_df[
+        filtered_df["country"].str.contains(country_filter)
+    ]
 
 # ---------------- COMMON PLOT FUNCTION ----------------
 def show_plot(fig):
