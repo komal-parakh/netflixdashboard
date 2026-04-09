@@ -113,8 +113,8 @@ if page == "Home":
 
     fig, ax = plt.subplots(figsize=(6,4))
     ax.plot(growth.index, growth.values, color = "red")
-    ax.xlabel("Year")
-    ax.ylabel("Titles")
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Titles")
     show_plot(fig)
 
 # =========================================================
