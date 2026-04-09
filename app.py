@@ -7,7 +7,7 @@ import random
 st.set_page_config(page_title="Netflix Dashboard", layout="wide")
 
 # ---------------- LOAD DATA ----------------
-@st.cache_data
+@st.cache_data # means the file is only loaded once — not on every user interaction
 def load_data():
     df = pd.read_csv("netflix_titles.csv")
     df["country"] = df["country"].fillna("Unknown")
