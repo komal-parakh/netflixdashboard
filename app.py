@@ -149,7 +149,7 @@ elif page == "Visualizations":
         top_genres = genres.value_counts().head(10)
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.barh(top_genres.index, top_genres.values, color = "#f0a1a5")
+        ax.barh(top_genres.index, top_genres.values, color = "#e67076")
         ax.set_title("Top 10 Genres on Netflix")
         ax.set_xlabel("Number of Titles")
         ax.set_ylabel("Genres")
@@ -161,7 +161,7 @@ elif page == "Visualizations":
         ratings = filtered_df["rating"].value_counts()
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.bar(ratings.index, ratings.values, color = "#f0a1a5")
+        ax.bar(ratings.index, ratings.values, color = "#e67076")
         ax.set_title("Content Ratings Distribution")
         ax.set_xlabel("Ratings")
         ax.set_ylabel("Count")
@@ -177,8 +177,8 @@ elif page == "Visualizations":
         tv = filtered_df[filtered_df["type"] == "TV Show"].groupby("release_year").size()
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.plot(movies.index, movies.values, label="Movies", color = "red")
-        ax.plot(tv.index, tv.values, label="TV Shows", color = "red")
+        ax.plot(movies.index, movies.values, label="Movies", color = "#e67076")
+        ax.plot(tv.index, tv.values, label="TV Shows", color = "#e67076")
         ax.set_title("Movies vs TV Shows Over Time")
         ax.set_xlabel("Release Year")
         ax.set_ylabel("Number of Titles")
@@ -191,7 +191,7 @@ elif page == "Visualizations":
         countries = filtered_df["country"].value_counts().head(10)
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.barh(countries.index, countries.values, color = "red")
+        ax.barh(countries.index, countries.values, color = "#e67076")
         ax.set_title("Top 10 Content Producing Countries")
         ax.set_xlabel("Number of Titles")
         ax.set_ylabel("Countries")
@@ -205,7 +205,7 @@ elif page == "Visualizations":
         monthly = filtered_df["date_added"].dt.month.value_counts().sort_index()
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.plot(monthly.index, monthly.values, marker="o", label="Content Added", color = "red")
+        ax.plot(monthly.index, monthly.values, marker="o", label="Content Added", color = "#e67076")
         ax.set_title("Content Added Per Month")
         ax.set_xlabel("Month")
         ax.set_ylabel("Number of Titles")
@@ -219,7 +219,7 @@ elif page == "Visualizations":
         temp_df["duration_int"] = temp_df["duration"].str.extract("(\d+)").astype(float)
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.hist(temp_df["duration_int"].dropna(), bins=20, color = "red")
+        ax.hist(temp_df["duration_int"].dropna(), bins=20, color = "#e67076")
         ax.set_title("Distribution of Content Duration")
         ax.set_xlabel("Duration (Minutes/Seasons)")
         ax.set_ylabel("Frequency")
