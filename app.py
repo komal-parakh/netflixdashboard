@@ -149,7 +149,7 @@ elif page == "Visualizations":
         top_genres = genres.value_counts().head(10)
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.barh(top_genres.index, top_genres.values, color = "red")
+        ax.barh(top_genres.index, top_genres.values, color = "#f0a1a5")
         ax.set_title("Top 10 Genres on Netflix")
         ax.set_xlabel("Number of Titles")
         ax.set_ylabel("Genres")
@@ -161,7 +161,7 @@ elif page == "Visualizations":
         ratings = filtered_df["rating"].value_counts()
 
         fig, ax = plt.subplots(figsize=(6,4))
-        ax.bar(ratings.index, ratings.values, color = "red")
+        ax.bar(ratings.index, ratings.values, color = "#f0a1a5")
         ax.set_title("Content Ratings Distribution")
         ax.set_xlabel("Ratings")
         ax.set_ylabel("Count")
