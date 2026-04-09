@@ -178,7 +178,7 @@ elif page == "Visualizations":
 
         fig, ax = plt.subplots(figsize=(6,4))
         ax.plot(movies.index, movies.values, label="Movies", color = "#e67076")
-        ax.plot(tv.index, tv.values, label="TV Shows", color = "#e67076")
+        ax.plot(tv.index, tv.values, label="TV Shows", color = "#fcc2c5")
         ax.set_title("Movies vs TV Shows Over Time")
         ax.set_xlabel("Release Year")
         ax.set_ylabel("Number of Titles")
