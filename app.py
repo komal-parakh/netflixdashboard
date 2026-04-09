@@ -112,7 +112,7 @@ if page == "Home":
     growth = filtered_df.groupby("release_year").size()
 
     fig, ax = plt.subplots(figsize=(6,4))
-    ax.plot(growth.index, growth.values)
+    ax.plot(growth.index, growth.values, color = "red")
     ax.set_xlabel("Year")
     ax.set_ylabel("Titles")
     show_plot(fig)
