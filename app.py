@@ -66,7 +66,7 @@ genre_filter = st.sidebar.selectbox("Genre", genres)
 countries = ["All"] + list(df["country"].unique())
 country_filter = st.sidebar.selectbox("Country", countries)
 
-ratings = ["All"] + list(df["rating"].dropna().unique())
+ratings = ["All"] + list(df["rating"].unique())
 rating_filter = st.sidebar.selectbox("Rating", ratings)
 # ---------------- FILTER LOGIC ----------------
 filtered_df = df[
