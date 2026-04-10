@@ -84,6 +84,11 @@ if country_filter != "All":
         filtered_df["country"].str.contains(country_filter)
     ]
 
+if rating_filter != "All":
+    filtered_df = filtered_df[
+        filtered_df["rating"].str.contains(rating_filter)
+    ]
+
 # ---------------- COMMON PLOT FUNCTION ----------------
 def show_plot(fig):
     plt.tight_layout()
